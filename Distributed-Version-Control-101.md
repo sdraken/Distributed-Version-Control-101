@@ -8,10 +8,12 @@ The purpose of this section is to gain an understanding of the basic implementat
 How would we go about creating our own system for version control? A naive form of version control is to simply save each version separately. This is both easy to do and makes accessing older versions effortless. For smaller projects this strategy can work, but becomes more unfeasible as a project grows. This is because a lot of memory is being used to store data that remains unchanged between versions.  
 #### Linear Version Control
 A more sophisticated form of version control is to track changes between versions. This requires some overhead to implement but can eliminate most (if not all) of the redundant data. It's easy to imagine how this could be done with a singly linked list, where a new version corresponds to adding a new element at the end of the list, with the element containing every change made since the previous version. If we wanted to view the nth version of a project, we would simply iterate through the list, adding up the contributions of each element until we reached the nth element.
-$$
+```math
 \begin{align*}
 \fbox{A} \rightarrow \fbox{B} \rightarrow\fbox{C} \rightarrow
-\end{align*}\dots$$We could prepend new versions to the list instead to achieve a similar effect, but this is going to be an important distinction when working with graphs. 
+\end{align*}\dots
+```
+We could prepend new versions to the list instead to achieve a similar effect, but this is going to be an important distinction when working with graphs. 
 #### Version Control And The DAG
 While lists are an efficient way to implement version control, it limits the way we're able to represent versions in how they relate to each other. 
 
@@ -19,28 +21,28 @@ As an example, It would be useful to always have a stable build of our project, 
 
 The direction we're adding new elements doesn't really matter when we're using a linear structure such as a list. Now that we're dealing with a non-linear structure, you might notice that there is a big difference between:
 1. letting a version be pointed to by the versions it depends on
-$$
+```math
 \begin{align*}
 &\,\,\,\,\,\,\,\,\,\,\fbox{E}\rightarrow\fbox{F}\\
 &\nearrow\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\searrow
-
 \\
 \fbox{A} \rightarrow \fbox{B}& \rightarrow\fbox{C} \rightarrow \fbox{D}\rightarrow \fbox{K}\rightarrow\fbox{L}
 \\
 &\searrow\\
 &\,\,\,\,\,\,\,\,\,\,\fbox{G}\rightarrow\fbox{H}\rightarrow\fbox{I}\rightarrow\fbox{J}
-\end{align*}$$
+\end{align*}
+```
 2. Having the new version itself point towards the versions it depends on.
-$$
+```math
 \begin{align*}
 &\,\,\,\,\,\,\,\,\,\fbox{E}\leftarrow\fbox{F}\\
 &\swarrow\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\nwarrow
-
 \\
 \fbox{A} \leftarrow \fbox{B}& \leftarrow\fbox{C} \leftarrow \fbox{D}\leftarrow \fbox{K}\leftarrow\fbox{L}\\
 &\nwarrow\\
 &\,\,\,\,\,\,\,\,\,\,\fbox{G}\leftarrow\fbox{H}\leftarrow\fbox{I}\leftarrow\fbox{J}
-\end{align*}$$
+\end{align*}
+```
 With (1), if we wanted to view $J$ we'd have to start at $A$ and check every possible path to make sure that we find all paths leading to $J$. there is no simple way of figuring out what $J$ depends on. If we instead used (2), then we're already given all paths between $J$ and $A$ . (2) is clearly the better option, which is why git and I assume most other version control systems use it.
 
 Most version control systems are based on the basic idea of using the structure of a DAG. It can be a lot easier to understand how these tools work if we keep this underlying structure in mind. 
