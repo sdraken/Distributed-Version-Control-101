@@ -77,8 +77,8 @@ otherwise it creates a new branch for our new commit $Y$
 
 ```math
 \begin{align*}
-&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\fbox{Y}\\
-&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\swarrow\\
+&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\fbox{Y}\\
+&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\swarrow\\
 &\,\,\,\,\,\,\,\,\,\,\fbox{G}\leftarrow\fbox{X}\leftarrow\fbox{H}\\
 &\swarrow\\
 \fbox{A} \leftarrow \fbox{B}& \leftarrow\fbox{C} \leftarrow \fbox{D}\leftarrow \fbox{E}\\
@@ -89,8 +89,8 @@ otherwise it creates a new branch for our new commit $Y$
 we can also explicitly tell Git if we want to create a new branch
 ```math
 \begin{align*}
-&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\fbox{Y}\\
-&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\swarrow\\
+&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\fbox{Y}\\
+&\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\swarrow\\
 &\,\,\,\,\,\,\,\,\,\,\fbox{G}\leftarrow\fbox{H}\leftarrow\fbox{X}\\
 &\swarrow\\
 \fbox{A} \leftarrow \fbox{B}& \leftarrow\fbox{C} \leftarrow \fbox{D}\leftarrow \fbox{E}\\
@@ -104,7 +104,7 @@ or, if we're merging branches then our new commit $Y$ will be connected to every
 
 
 &\,\,\,\,\,\,\,\,\,\,\fbox{G}\leftarrow\fbox{H}\leftarrow\fbox{X}\\
-&\swarrow\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\nwarrow\\
+&\swarrow\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\nwarrow\\
 \fbox{A} \leftarrow \fbox{B}& \leftarrow\fbox{C} \leftarrow \fbox{D}\leftarrow \fbox{E}\leftarrow \fbox{Y}\\
 
 \end{align*}
